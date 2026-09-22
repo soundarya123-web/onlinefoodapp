@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Validation</title>
+</head>
+<body>
+
+<h2>Login Form</h2>
+
+<form onsubmit="return loginValidation()">
+
+    Username:
+    <input type="text" id="username">
+    <br><br>
+
+    Password:
+    <input type="password" id="password">
+    <br><br>
+
+    <input type="submit" value="Login">
+
+</form>
+
+<script>
+function loginValidation() {
+
+    var username = document.getElementById("username").value;
+    let password = document.getElementById("password").value;
+
+    if (username == "") {
+        alert("Please enter username");
+        return false;
+    }
+
+    if (password == "") {
+        alert("Please enter password");
+        return false;
+    }
+
+    
+}
+</script>
+
+</body>
+</html>
