@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connectly - Social Media</title>
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<header class="navbar">
+
+    <div class="logo">
+        <i class="fa-solid fa-comments"></i>
+        Connectly
+    </div>
+
+    <div class="search-box">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" id="searchInput" placeholder="Search">
+    </div>
+
+    <div class="nav-icons">
+        <button onclick="showPage('home')">
+            <i class="fa-solid fa-house"></i>
+        </button>
+
+        <button onclick="showNotification()">
+            <i class="fa-regular fa-bell"></i>
+        </button>
+
+        <button onclick="toggleDarkMode()">
+            <i class="fa-solid fa-moon"></i>
+        </button>
+
+        <img
+            src="https://i.pravatar.cc/100?img=47"
+            class="nav-profile"
+            onclick="showPage('profile')"
+        >
+    </div>
+
+</header>
+
+
+<div class="container">
+
+    <!-- LEFT SIDEBAR -->
+    <aside class="left-sidebar">
+
+        <div class="profile-card">
+            <img src="https://i.pravatar.cc/150?img=47">
+
+            <h3>Soundarya</h3>
+            <p>@soundarya</p>
+        </div>
+
+        <nav class="side-menu">
+
+            <button onclick="showPage('home')" class="active">
+                <i class="fa-solid fa-house"></i>
+                Home
+            </button>
+
+            <button onclick="showPage('profile')">
+                <i class="fa-solid fa-user"></i>
+                Profile
+            </button>
+
+            <button onclick="showPage('messages')">
+                <i class="fa-solid fa-message"></i>
+                Messages
+            </button>
+
+            <button onclick="showNotification()">
+                <i class="fa-solid fa-bell"></i>
+                Notifications
+            </button>
+
+            <button>
+                <i class="fa-solid fa-bookmark"></i>
+                Saved
+            </button>
+
+            <button>
+                <i class="fa-solid fa-gear"></i>
+                Settings
+            </button>
+
+        </nav>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="main-content" id="mainContent">
+
+        <!-- STORIES -->
+        <section class="stories">
+
+            <div class="story add-story">
+                <div class="story-image">
+                    <i class="fa-solid fa-plus"></i>
+                </div>
+                <span>Your Story</span>
+            </div>
+
+            <div class="story">
+                <img src="https://i.pravatar.cc/100?img=12">
+                <span>Jaya</span>
+            </div>
+
+            <div class="story">
+                <img src="https://i.pravatar.cc/100?img=32">
+                <span>Sowmya</span>
+            </div>
+
+            <div class="story">
+                <img src="https://i.pravatar.cc/100?img=44">
+                <span>Ruchitha</span>
+            </div>
+
+            <div class="story">
+                <img src="https://i.pravatar.cc/100?img=16">
+                <span>Anu</span>
+            </div>
+
+        </section>
+
+
+        <!-- CREATE POST -->
+        <section class="create-post">
+
+            <div class="create-top">
+
+                <img src="https://i.pravatar.cc/100?img=47">
+
+                <input
+                    type="text"
+                    id="postInput"
+                    placeholder="What's on your mind?"
+                >
+
+            </div>
+
+            <div class="post-options">
+
+                <button onclick="selectImage()">
+                    <i class="fa-solid fa-image"></i>
+                    Photo
+                </button>
+
+                <button>
+                    <i class="fa-solid fa-video"></i>
+                    Video
+                </button>
+
+                <button>
+                    <i class="fa-solid fa-face-smile"></i>
+                    Feeling
+                </button>
+
+                <button class="post-button" onclick="createPost()">
+                    Post
+                </button>
+
+            </div>
+
+            <input
+                type="file"
+                id="imageInput"
+                accept="image/*"
+                hidden
+            >
+
+        </section>
+
+
+        <!-- POSTS -->
+
+        <section id="posts">
+
+            <!-- POST 1 -->
+            <article class="post">
+
+                <div class="post-header">
+
+                    <div class="user-info">
+
+                        <img src="https://i.pravatar.cc/100?img=12">
+
+                        <div>
+                            <h4>Akshaya</h4>
+                            <span>2 hours ago</span>
+                        </div>
+
+                    </div>
+
+                    <button class="more">
+                        <i class="fa-solid fa-ellipsis"></i>
+                    </button>
+
+                </div>
+
+                <p class="post-text">
+                    Beautiful sunset today 🌅✨
+                    Sometimes the simplest moments are the most beautiful.
+                </p>
+
+                <img
+                    class="post-image"
+                    src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?w=900"
+                >
+
+                <div class="post-stats">
+                    <span class="like-count">24 Likes</span>
+                    <span>6 Comments</span>
+                </div>
+
+                <div class="post-actions">
+
+                    <button class="like-button" onclick="likePost(this)">
+                        <i class="fa-regular fa-heart"></i>
+                        Like
+                    </button>
+
+                    <button onclick="focusComment(this)">
+                        <i class="fa-regular fa-comment"></i>
+                        Comment
+                    </button>
+
+                    <button onclick="sharePost()">
+                        <i class="fa-solid fa-share"></i>
+                        Share
+                    </button>
+
+                </div>
+
+                <div class="comment-box">
+
+                    <input
+                        type="text"
+                        placeholder="Write a comment..."
+                    >
+
+                    <button onclick="addComment(this)">
+                        Post
+                    </button>
+
+                </div>
+
+                <div class="comments"></div>
+
+            </article>
+
+
+            <!-- POST 2 -->
+            <article class="post">
+
+                <div class="post-header">
+
+                    <div class="user-info">
+
+                        <img src="https://i.pravatar.cc/100?img=32">
+
+                        <div>
+                            <h4>Sowmya</h4>
+                            <span>5 hours ago</span>
+                        </div>
+
+                    </div>
+
+                    <button class="more">
+                        <i class="fa-solid fa-ellipsis"></i>
+                    </button>
+
+                </div>
+
+                <p class="post-text">
+                    Weekend vibes! ☕🌿
+                    Taking some time to relax and enjoy the little things.
+                </p>
+
+                <div class="post-stats">
+                    <span class="like-count">18 Likes</span>
+                    <span>3 Comments</span>
+                </div>
+
+                <div class="post-actions">
+
+                    <button class="like-button" onclick="likePost(this)">
+                        <i class="fa-regular fa-heart"></i>
+                        Like
+                    </button>
+
+                    <button onclick="focusComment(this)">
+                        <i class="fa-regular fa-comment"></i>
+                        Comment
+                    </button>
+
+                    <button onclick="sharePost()">
+                        <i class="fa-solid fa-share"></i>
+                        Share
+                    </button>
+
+                </div>
+
+                <div class="comment-box">
+
+                    <input
+                        type="text"
+                        placeholder="Write a comment..."
+                    >
+
+                    <button onclick="addComment(this)">
+                        Post
+                    </button>
+
+                </div>
+
+                <div class="comments"></div>
+
+            </article>
+
+        </section>
+
+    </main>
+
+
+    <!-- RIGHT SIDEBAR -->
+    <aside class="right-sidebar">
+
+        <div class="suggestions">
+
+            <div class="section-title">
+                <h3>People you may know</h3>
+                <a href="#">See All</a>
+            </div>
+
+
+            <div class="suggestion">
+
+                <img src="https://i.pravatar.cc/100?img=5">
+
+                <div>
+                    <h4>Ruchitha</h4>
+                    <span>12 mutual friends</span>
+                </div>
+
+                <button onclick="followUser(this)">
+                    Follow
+                </button>
+
+            </div>
+
+
+            <div class="suggestion">
+
+                <img src="https://i.pravatar.cc/100?img=8">
+
+                <div>
+                    <h4>Dharani</h4>
+                    <span>8 mutual friends</span>
+                </div>
+
+                <button onclick="followUser(this)">
+                    Follow
+                </button>
+
+            </div>
+
+
+            <div class="suggestion">
+
+                <img src="https://i.pravatar.cc/100?img=20">
+
+                <div>
+                    <h4>Tejaswini</h4>
+                    <span>5 mutual friends</span>
+                </div>
+
+                <button onclick="followUser(this)">
+                    Follow
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div class="trending">
+
+            <h3>Trending</h3>
+
+            <div class="trend">
+                <span>#Photography</span>
+                <small>12.4K posts</small>
+            </div>
+
+            <div class="trend">
+                <span>#Travel</span>
+                <small>8.7K posts</small>
+            </div>
+
+            <div class="trend">
+                <span>#Technology</span>
+                <small>6.2K posts</small>
+            </div>
+
+        </div>
+
+    </aside>
+
+</div>
+
+
+<footer>
+    © 2026 Connectly • Made with ❤️
+</footer>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
